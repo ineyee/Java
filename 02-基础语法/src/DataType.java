@@ -1,3 +1,7 @@
+import java.lang.reflect.Array;
+
+import org.omg.CORBA.Object;
+
 /**
  * 02-数据类型
  * @author yiyi
@@ -26,6 +30,8 @@ public class DataType {
 		 * 		char：字符类型，占2个字节，存储单个Unicode字符
 		 * 
 		 * 2、引用数据类型，类似于指针
+		 * 		字符串的类型为：String
+		 * 		数组的类型为：T[]，T就是数组里存储的数据类型
 		 */
 	}
 	
