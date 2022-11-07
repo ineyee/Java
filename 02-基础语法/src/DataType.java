@@ -1,4 +1,8 @@
-
+/**
+ * 02-数据类型
+ * @author yiyi
+ *
+ */
 public class DataType {
 
 	public static void main(String[] args) {
