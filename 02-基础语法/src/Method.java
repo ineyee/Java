@@ -44,4 +44,11 @@ public class Method {
 		return sum;
 	}
 	
+	private static void 参数传递() {
+		/*
+		 * Java里基本数据类型无论作为参数传递还是函数的返回值都是值传递
+		 * Java里引用数据类型无论作为参数传递还是函数的返回值都是引用（指针）传递
+		 */
+	}
+	
 }
