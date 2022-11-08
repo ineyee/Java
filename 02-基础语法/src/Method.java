@@ -51,4 +51,21 @@ public class Method {
 		 */
 	}
 	
+	private static void 方法重载() {
+		/*
+		 * 方法重写是指子类重写父类里面的方法，这两个方法是一模一样的，只不过一个写在父类里，一个写在子类里
+		 * 
+		 * 不是所有的语言都支持方法重载，Java里支持方法重载
+		 * 方法重载是指两个方法的方法名相同、但是参数列表不同（可以是参数的个数不同，也可以是参数的类型的不同），返回值和执行体不做要求
+		 */
+	}
+	private static int add(int num1, int num2) {
+		return num1 + num2;
+	}
+	private static int add(int num1, int num2, int num3) {
+		return num1 + num2 + num3;
+	}
+	private static double add(double num1, double num2) {
+		return num1 + num2;
+	}
 }
