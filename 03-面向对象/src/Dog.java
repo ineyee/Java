@@ -21,7 +21,7 @@ public class Dog {
 	}
 }
 
-class Temp {
+class TempDog {
 	public static void main(String[] args) {
 		// Java里创建对象的时候必须在构造方法前面加个new关键字
 		Dog dog = new Dog();
