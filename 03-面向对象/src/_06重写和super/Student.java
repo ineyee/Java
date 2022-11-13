@@ -7,7 +7,7 @@ public class Student extends Person {
 	@Override
 	public void speak() {
 		/*
-		 * Java里子类调用父类里的方法也是用super
+		 * Java里子类调用父类里的方法（包括构造方法）也是用super
 		 */
 		super.speak();
 		eat();
