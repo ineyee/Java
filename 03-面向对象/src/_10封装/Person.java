@@ -8,9 +8,11 @@ package _10封装;
  * public的set方法和get方法供外界访问
  */
 public class Person {
+	// 实例属性
 	private int age;
 	private String name;
 	
+	// 实例方法
 	public int getAge() {
 		return age;
 	}

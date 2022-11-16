@@ -44,6 +44,11 @@ public class ConstructorDog {
 		 * 传进来了，所以编译器就为所有的方法都搞了这么一个隐藏的参数this，代表方法调用者——即调用方法的那个对象，这就类似于：
 		 * 
 		 * public ConstructorDog(ConstructorDog this, int age) { ... }
+		 * 
+		 * 所有语言里方法调用的本质都是一样的，比方说Person类有一个实例方法run() { ... }，那么编译器其实会在这个方法的参数
+		 * 列表的第一个参数的位置插入一个Person this/self这样的默认参数，那此时假如我们创建了一个对象p1，p1调用run方法的本质
+		 * 就是沿着某条线去方法区找到这个run方法，然后把p1传给run方法的第一个参数，即run(p1)就算完成调用，这也是为什么我们常说
+		 * 实例方法内部的this/self就是方法调用者本身，因为方法调用者其实通过第一个默认参数传进来了。
 		 */ 
 		this(age, 0);
 		System.out.println(age);
