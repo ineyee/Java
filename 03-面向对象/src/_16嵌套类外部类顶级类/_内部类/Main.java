@@ -1,7 +1,6 @@
-package _内部类;
+package _16嵌套类外部类顶级类._内部类;
 
-// 导入一下内部类Cat
-import _内部类.Person.Cat;
+import _16嵌套类外部类顶级类._内部类.Person.Cat;
 
 public class Main {
 
