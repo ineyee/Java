@@ -23,6 +23,7 @@ package _27匿名类.example2;
  * 匿名类必然会实现putCodeIn方法，于是这就相当于外界把代码块挂在匿名类内部传递进来了
  */
 public class TimeUtil {
+	@FunctionalInterface
 	public interface Block {
 		void putCodeIn();
 	}
