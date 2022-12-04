@@ -21,8 +21,12 @@ package _02Number类型;
  * 就不用我们去强转了
  */
 public class Main {
-
 	public static void main(String[] args) {
+		test1();
+		test2();
+	}
+
+	public static void test1() {
 		/*
 		 * 比方说我们想定义一个数组，代表一家店周一到周五的收入 正数代表赚钱了 0代表不赚不赔 负数代表赔钱了 null代表没开门
 		 */
@@ -36,8 +40,55 @@ public class Main {
 		int[] income = { 100, 0, 0, -100, -200 };
 		Integer[] income1 = { 100, null, 0, -100, -200 };
 		for (Integer integer : income1) {
-			System.out.println(integer.doubleValue());
+			System.out.println(integer);
 		}
 	}
-
+	
+	public static void test2() {
+		/*
+		 * Number类型的判等不推荐使用==、!=，而是推荐使用equals
+		 * 
+		 * 因为==、!=用于引用类型是判断它们的指针一样不一样，而equals才是判断它们内存存储的值一样不一样
+		 */
+		
+		Integer num1 = 88;
+		Integer num2 = 88;
+		Integer num3 = 128;
+		Integer num4 = 128;
+	
+		/*
+		 * 这两个true都很好理解，因为num1和num2内存里存储的值都是88，num3和num4内存里存储的值都是888
+		 */
+		System.out.println(num1.equals(num2)); // true
+		System.out.println(num3.equals(num4)); // true
+		
+		/*
+		 * 一个true、一个false？很奇怪
+		 * 先说num3和num4，虽然num3和num4内存里都存储的是128，但num3是个指针、num4也是个指针，它俩
+		 * 分别指向了两个不同的对象，所以指针值是不同的，所以打印false是很正常的
+		 * 
+		 * 那同理啊，num1和num2也应该是这样的道理打印false才对，却怎么打印了true呢？没毛病，这样分析是对的，
+		 * 但出问题的地方在于Integer这个类内部会缓存[-127, 128]这个范围的数字，系统认为我们会频繁使用这个范围
+		 * 的数字，所以就帮我们缓存起来了，所以只要我们用到这个范围的数字，它都是从缓存中拿同一份内存地址存储的这个
+		 * 数字，所以num1和num2的内存地址其实是一样的，也就返回了true
+		 * 
+		 * 这也是为什么Number类型的判等不推荐使用==、!=，而是推荐使用equals的原因
+		 */
+		System.out.println(num1 == num2); // true
+		System.out.println(num3 == num4); // false
+	}
+	
+	public static void test3() {
+		/*
+		 * 基本数据类型和Number类型之间可以直接赋值取值，因为编译器会自动帮我们做类型转化
+		 */
+		int num1 = 10;
+		Integer num2 = num1;
+		
+		/*
+		 * 但是基本数据类型的数组和Number类型的数组之间是不能直接搞的，编译器不管这种情况
+		 */
+		int[] arr1 = { 1, 2 };
+//		Integer[] arr2 =  arr1; // 无法直接赋值，编译报错
+	}
 }
