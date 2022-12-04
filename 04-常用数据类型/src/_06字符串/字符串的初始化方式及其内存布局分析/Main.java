@@ -59,10 +59,14 @@ public class Main {
 		 * 有变量或常量这种宿主才能存储在某些内存中，而变量和常量是真正占内存的。比如说局部变量str存储在栈内存中，
 		 * 它指向的那个字符串对象存储在常量区，所以"123"这个字面量就寄生在这个字符串对象中（value属性对应的那8个
 		 * 字节的内存中）而存储在堆内存中，STR更不用说了，它本身存储在静态全局区，然后肯定也指向的是常量区的一个字符串对象，
-		 * 由此可见常量指向的对象可定存储在常量区，变量指向的对象只要是通过字面量初始化的也存储在常量区、否则才存储在堆区。
+		 * 由此可见常量指向的对象可定存储在常量区，变量指向的对象只要是通过字面量初始化的也存储在常量区，用构造方法初始化和
+		 * 用工厂方法初始化才存储在堆区。
 		 */
 		System.out.println(str1 == str2); // true
 		
+		/*
+		 * 2、用构造方法初始化
+		 */
 		String str3 = new String("123"); 
 		String str4 = new String("123"); 
 		/*
@@ -78,10 +82,12 @@ public class Main {
 		 */
 		System.out.println(str3 == str4); // false
 		
-		
 		/*
-		 * 字符串的拼接操作并不是改变了原来对象的值，而是新建了一个对象“123456”，并让str1指向了这个新对象“123456”
+		 * 3、用工厂方法初始化
 		 */
-		str1 += "456";
+		String str5 = String.format("%d%d%d", 1, 2, 3); 
+		String str6 = String.format("%d%d%d", 1, 2, 3); 
+		System.out.println(str2 == str5); // false
+		System.out.println(str5 == str6); // false
 	}
 }
