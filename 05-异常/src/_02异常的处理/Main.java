@@ -1,13 +1,21 @@
 package _02异常的处理;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 public class Main {
 	public static void main(String[] args) {
 		/*
 		 * 程序产生了异常，我们一般称之为：抛出了异常。不管是检查型异常还是非检查型异常，都有两种处理方式：
 		 * 1、try-catch捕获异常
-		 * 2、throws将异常往上抛
+		 * 2、throws把异常抛给上层方法
 		 */
 		test1();
+		try {
+			test2();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}	
 	
 	public static void test1() {
@@ -70,5 +78,22 @@ public class Main {
 			System.out.println(4);
 		}
 		System.out.println(5);
+	}
+
+	/*
+	 * 二、throws把异常抛给上层方法
+	 * 
+	 * 用法就是在方法的参数列表和执行体中间throws一下会抛出的异常（这个地方最好写出具体的异常，而不要直接throws一个父类Exception，
+	 * 这样别人再调用这个方法的时候才能更精准地针对不同的异常做不同的catch），这么做的话，test3就会把异常抛给调用它的方法test2，
+	 * test2如果不处理还是会报错，所以test2也可以将异常抛给调用它的方法main，但是main如果不处理的话还是会报错，所以
+	 * main方法也可以将异常继续往上抛，此时就是抛给JVM了，那么throws这一套就是如果异常都抛给JVM了，那运行时就会一旦
+	 * 发生这个异常，程序就会崩溃，所以建议这其中任一环节你用try-catch处理一下这个异常，而非总是throws往上抛。
+	 */
+	public static void test2() throws FileNotFoundException {
+		test3();
+	}
+	public static void test3() throws FileNotFoundException {
+		String filePath = "C://text.txt";
+		FileOutputStream fos = new FileOutputStream(filePath);
 	}
 }
