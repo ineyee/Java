@@ -1,10 +1,9 @@
 package _01异常的分类;
 
-public class Main {
-	public static void main(String[] args) {
-		test7();
-	}
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
+public class Main {
 	public static void test1() {
 		/*
 		 * 一、开发中的错误
@@ -19,7 +18,7 @@ public class Main {
 		 * 逻辑错误编译是能通过的，只不过程序的结果不是我们的预期
 		 * 
 		 * 3、运行时错误————也叫做异常
-		 * 比如数组越界了、空指针了等等，这些都是在程序运行过程中才产生的意外，这就是运行时错误，运行时错误也叫做异常
+		 * 比如OOM了、StackOverFlow了、数组越界了、空指针了等等，这些都是在程序运行过程中才产生的意外，这就是运行时错误，运行时错误也叫做异常
 		 * 运行时错误编译是能通过的，但运行时会导致程序崩溃
 		 */
 	}
@@ -41,39 +40,58 @@ public class Main {
 		 * 
 		 * 异常的分类：
 		 * 1、检查型异常
-		 * 所谓检查型异常是指如果开发者没有处理这类异常，编译器就会报错，开发者如果处理了，编译器就不会报错的异常。
-		 * 上面除了RuntimeException和Error以外的异常都是检查型异常，这类异常程序员一般难以通过把代码写健壮的方式来避免，而是必须得通过那两种异常处理的方式来搞。
-		 * 比如下面的test3例子
+		 * 所谓检查型异常是指如果开发者没有处理这类异常，编译器就会报错，开发者必须通过try-catch或者throws处理一下的异常。
+		 * 检查型异常，就算你写的代码再规范再健壮也无法100%避免，下面我们会举一些经典的检查型异常：test10、test11。
+		 * 上面除了RuntimeException和Error以外的异常都是检查型异常。
 		 * 
 		 * 2、非检查型异常
-		 * 所谓非检查型异常是指如果开发者没有处理这类异常，编译器也不会报错的异常，那运行时这种异常一旦发生，程序将会崩溃，所以建议对非检查型异常做处理。
-		 * 上面RuntimeException和Error都是非检查型异常，这类异常程序员只要写代码健壮一些是可以避免的，当然也可以通过异常处理的两种方式来处理。
-		 * 比如下面的test4、test5、test6、test6例子都是一些经典的非检查型异常
+		 * 所谓非检查型异常是指即便开发者没有处理这里异常，编译器也不会报错的异常，但是这种异常一旦在程序运行的时候发生，程序就会崩溃，所以建议通过try-catch或者throws处理一下。
+		 * 非检查型异常，我们在编码的时候写得规范些、健壮些就可以100%地避免，下面我们会举一些经典的非检查型异常：test20、test21、test22、test23。
+		 * 上面RuntimeException和Error都是非检查型异常。
 		 */	
 	}
 	
-	public static void test3() throws ClassNotFoundException {
-		// 假设这个字符串是我们从服务器请求过来的
-		String clsName = "Dog";
+	void test10() throws FileNotFoundException {
+		// 假设这个字符串是别人传递给我们的
+		String filePath = "C://text.txt";
 		
 		/*
-		 * 然后我们要拿服务器传给我们的字符串来反射出一个类
-		 * 你会发现编译器立马报了一个“ClassNotFoundException”的异常，并且还提示我们可以用异常处理的两种方式来搞定这个异常，果然
-		 * 我们任意采用一种方式处理，编译器就不抛这个异常了，这就是一个典型的检查型异常
+		 * FileOutputStream，文件输出流类，我们拿到这个类的对象之后，就可以往filePath里写数据
 		 * 
-		 * 再来理解一下检查型异常：我们写的代码是没有问题的，只是因为这个字符串是服务器传递给我们的，我们程序员撑死了是对这个字符串
-		 * 做做判空操作，而没法通过代码判断我们项目的类里是不是真得有服务器传过来的字符串对应的类，有当然好，那没有的话程序不就崩了嘛，
-		 * 所以编译器就强制帮我们对这种异常做了检查，让我们必须处理掉这些场景
+		 * 这样写编译时就报错了，抛出一个异常是“FileNotFoundException”——文件找不到异常，这个异常就是个检查型异常
+		 * 
+		 * 那这个异常为什么会抛出呢？是因为我们根本无法确定别人会把什么字符串传递给我们，假设它传了个乱七八糟的字符串，
+		 * 那就肯定找不到这个文件啊，你可能会想那我们可以先判断一下文件目录里有没有“filePath”这个文件啊，有的话再执
+		 * 行这个操作，没有的话就创建一下这个文件再执行这个操作不就算是通过代码规范和代码健壮性来避免掉这个异常了嘛。
+		 * 想法是好的，但是很可惜，编译器是聪明的，它知道我们根本没有办法获取到全部的文件，比如有很多文件是隐藏的，所以
+		 * 你那个【判断有没有这个文件的操作】本身就不是绝对严谨，所以它还是抛出了异常，强制要求我们try-catch或者throws处理才行
 		 */
-		Class cls = Class.forName(clsName);
-//		try {
-//			Class cls = Class.forName(clsName);
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}
+		FileOutputStream fos = new FileOutputStream(filePath);
 	}
 	
-	public static void test4() {
+	 void test11() {
+	  // 假设这个字符串是别人传递给我们的
+	  String clsName = "com.exception.Dog123";
+	  
+	  /*
+	   * 这样写编译时就报错了，抛出一个异常是“ClassNotFoundException”——类找不到异常，这个异常就是个检查型异常
+	   * 
+	   * 这个异常是个检查型异常，所谓检查型异常是指就算你写的代码再规范再健壮也无法避免，意思就是这种异常是我们程序员永远无法100%避免的
+	   * 
+	   * 那这个异常为什么会抛出呢？是因为我们根本无法确定别人会把什么字符串传递给我们，别人有可能给我们传"Dog"，也有可能给我们传"Dog123"，所以
+	   * 很可能我们的项目里根本就没有与这个字符串对应的一个类，你可能会想那我们获取一下项目里所有类的字符串数组，判断一下这个包含不包含这个字符串不就完了，
+	   * 包含的话再反射，不包含就不反射，不就算是通过代码规范和代码健壮性来避免掉这个异常了嘛。想法是好的，但是很可惜，编译器是聪明的，它知道我们根本没有
+	   * 办法获取到全部的类，比如还有一些三方库的类、动态库的类等等，所以你那个【判断一下这个包含不包含这个字符串】这个操作本身也不是严谨的，所以编译器就
+	   * 报错了，强制要求我们try-catch或者throws处理才行
+	   */
+	  	try {
+		  Class cls1 = Class.forName(clsName);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	 }
+	
+	public static void test20() {
 		System.out.println(1);
 		
 		for (int i = 0; i < 200; i++) {
@@ -90,7 +108,7 @@ public class Main {
 		System.out.println(2);
 	}
 	
-	public static void test5() {
+	public static void test21() {
 		/*
 		 * 比如我们这里写的一个无限递归，因为方法调用是会分配栈空间的，所以无限递归总有一天会把栈空间消耗尽，
 		 * 但编译时也是不会报错的，但运行时就报StackOverFlow了，因为栈内存溢出了
@@ -99,10 +117,10 @@ public class Main {
 		 * 
 		 * 这种异常如果我们写代码注意一点，比如写一个结束递归的条件，就可以避免，或者也可以通过异常处理的两种方式来处理一下
 		 */
-		test5();
+		test21();
 	}
 	
-	public static void test6() {
+	public static void test22() {
 		/*
 		 * 比如我们这里让一个null去做运算或调用方法，编译时也是不会报错的，但运行时就报空指针异常了，因为Java里是不允许使用
 		 * 空指针做运算或调用方法的
@@ -116,7 +134,7 @@ public class Main {
 		System.out.println(num);
 	}
 	
-	public static void test7() {
+	public static void test23() {
 		/*
 		 * 又比如数组越界
 		 * 
