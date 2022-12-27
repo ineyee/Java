@@ -22,10 +22,11 @@ public class Main {
 		swapValue(10, 20);
 		swapValue(30.1, 40.1);
 		
-		Student<Double> stu1 = new Student();
+		// 右边的<>里可以省略T
+		Student<Double> stu1 = new Student<>();
 		stu1.score = 98.8;
 		System.out.println(stu1.score);
-		Student<String> stu2 = new Student();
+		Student<String> stu2 = new Student<>();
 		stu2.score = "A";
 		System.out.println(stu2.score);
 		
