@@ -71,8 +71,12 @@ public class Main {
 
 /*
  * 二、泛型类
+ * 
+ * 我们也可以通过extends关键字来限制泛型的类型必须继承自某个类或者实现了某个接口，注意都是用extends，
+ * 而不用implements
  */
-class Person<T> {
+class Person<T extends Number & Dao> {
+	public T age;
 }
 
 class Student<T> {
