@@ -28,6 +28,15 @@ public class Main {
 		Student<String> stu2 = new Student();
 		stu2.score = "A";
 		System.out.println(stu2.score);
+		
+		/*
+		 * 但需要注意Student<Double>和Student<Number>之间并不存在父子关系，它们是完全独立的两个类，
+		 * 当然它们还是最终继承自Object。
+		 * 
+		 * 而Student<Double>则是Person<Double>的子类
+		 * 
+		 * 所以我们看泛型之间的集成关系应该这么看：首先要保证两个的泛型是一样的，然后再看这两个类本身之间有没有继承关系
+		 */
 	}
 	
 	/*
@@ -62,6 +71,9 @@ public class Main {
 /*
  * 二、泛型类
  */
+class Person<T> {
+}
+
 class Student<T> {
 	public T score;
 }
