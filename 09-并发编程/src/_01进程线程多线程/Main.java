@@ -1,3 +1,4 @@
+package _01进程线程多线程;
 public class Main {
 	public static void main(String[] args) {
 		/*
@@ -29,6 +30,10 @@ public class Main {
 		 * 主线程主要用来显示/刷新UI界面和处理UI事件（如点击事件、滚动事件等），子线程主要用来做耗时操作。
 		 */
 		
-		System.out.println(Thread.currentThread());
+		/*
+		 * 获取当前线程：Thread[main,5,main]
+		 * 线程名、线程的优先级、线程组的名
+		 */
+		System.out.println(Thread.currentThread()); 
 	}
 }
