@@ -3,7 +3,9 @@ package _01IO流的概念;
 public class Main {
 	/*
 	 * 一、IO流
-	 * IO流全称Input/Output Stream，译为输入输出流。
+	 * IO流全称Input/Output Stream，译为输入输出流。首先要知道IO流读取和写入的绝对都是0101这样的二进制数据，
+	 * 它不关心你这个二进制数据是文本encode的，还是图片文件、mp3文件、mp4文件encode的，反正它的作用就是读取和写入二进制，
+	 * 至于二进制的encode和decode不是它关心的事。
 	 * 
 	 * 我们的Java应用程序    ---010101010101--->    文件、设备（屏幕）等
 	 * 如果我们想在Java应用程序里把数据写入到文件或者设备，那么就得用输出流Output Stream
