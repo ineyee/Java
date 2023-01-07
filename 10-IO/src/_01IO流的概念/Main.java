@@ -22,10 +22,15 @@ public class Main {
 	
 	/*
 	 * 二、常用的IO流都在java.io包中
-	 * 1、字节流（Byte Streams）：所谓字节流是指一个字节一个字节的输入或输出，输入流为InputStream、输出流为OutputStream
-	 * 2、字符流（Character Streams）：所谓字节流是指一个字符一个字符一的输入或输出，输入流为Reader、输出流为Writer
-	 * 3、缓冲留（Buffered Streams）：输入流为BufferedInputStream/BufferedReader、输出流为BufferedOutputStream/BufferedWriter
-	 * 4、数据流（Data Streams）：输入流为DataInputStream、输出流为DataOutputStream
+	 * 1、字节流（Byte Streams）：所谓字节流是指一次性读取一个字节的二进制数据，输入流为InputStream、输出流为OutputStream，
+	 * 它是个万能文件流，主要用来读写文本文件、图片文件、MP3文件、MP4文件等各种文件到磁盘
+	 * 2、字符流（Character Streams）：所谓字节流是指一次性读取一个字符的二进制数据，输入流为Reader、输出流为Writer，
+	 * 它是个文本流，只能用来读写文本文件到磁盘
+	 * 3、缓冲留（Buffered Streams）：输入流为BufferedInputStream/BufferedReader、输出流为BufferedOutputStream/BufferedWriter，
+	 * 它其实是字节流和字符流的包装流，我们更推荐使用缓冲流
+	 * 4、数据流（Data Streams）：输入流为DataInputStream、输出流为DataOutputStream，
+	 * 它主要用来读写基本数据类型和字符串到磁盘
 	 * 5、对象流（Object Streams）：输入流为ObjectInputStream、输出流为ObjectOutputStream
+	 * 它主要用来读写引用类型到磁盘
 	 */
 }
