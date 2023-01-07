@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		/*
 		 * 四、数据流（Data Streams）：输入流为DataInputStream、输出流为DataOutputStream，
-		 * 它主要用来读写基本数据类型和字符串到磁盘
+		 * 它主要用来读写基本数据类型和字符串到磁盘上的文件里
 		 */
 		test();
 		test1();
