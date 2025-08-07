@@ -1,4 +1,4 @@
-package _01变量和常量;
+package _02变量和常量;
 
 public class _02常量 {
 
