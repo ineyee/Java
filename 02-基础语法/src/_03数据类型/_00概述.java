@@ -7,6 +7,10 @@ public class _00概述 {
 		
 		System.out.println(str.getClass() == String.class); // true
 		System.out.println(str instanceof String); // true
+		
+		int i = 10;
+	    double d = (double)i;
+	    System.out.println(i);
 	}
 
 }
@@ -37,4 +41,12 @@ public class _00概述 {
 	二、getClass() 和 instanceof
 	* getClass() 方法只可以应用于对象数据类型的变量，返回一个类，可以直接与类字面量（如 String.class）比较
 	* instanceof 运算符只可以应用于对象数据类型的变量，返回一个布尔值，用来判断一个对象是否是某个类或其子类的实例（或实现了某个接口）
+ */
+
+/*
+	三、数据类型强转
+	Java语言里的数据类型强转格式为：(数据类型)表达式
+	
+	int i = 10;
+    double d = (double)i;
  */
