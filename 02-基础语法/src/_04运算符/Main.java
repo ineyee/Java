@@ -1,9 +1,9 @@
-package _03运算符;
+package _04运算符;
 
-public class _01运算符 {
+public class Main {
 
 	public static void main(String[] args) {
-		
+		// TODO Auto-generated method stub
 
 	}
 
@@ -11,4 +11,4 @@ public class _01运算符 {
 
 /*
 	Java里的运算符和其它编程语言里的运算符基本一样
- */
+*/
