@@ -21,10 +21,12 @@ public class Main {
 	* 如果英文单词过长，一般使用缩写（取英文单词的前3~4个字母）
 	* 
 	* 项目名：使用小写字母加中划线来命名，如“java-demo”
-	* 文件夹名（包名）：使用全小写字母来命名，如“com.example.projectname”，Java规范禁止中划线或下划线
-	* 文件名
-		类文件名：使用大驼峰来命名，跟类名必须一致，如“UserService.java”
-		资源文件名：使用小写字母加中划线来命名，如“user-info.sql”
+	* 目录名：
+		* 普通文件夹名：使用小写字母加中划线来命名，如“user-avatars”
+		* 包名：使用全小写字母来命名，如“com.example.projectname”，Java规范禁止中划线或下划线
+	* 文件名：
+		* 普通文件名：使用小写字母加中划线来命名，如“user-info.sql”
+		* 类文件名：使用大驼峰来命名，跟类名必须一致，如“UserService.java”
 	* 类名：使用大驼峰来命名，必须跟类文件名一致，如“UserController”
 	* 变量名/属性名、函数名/方法名等所有其它标识符：使用小驼峰来命名，如“myName”、“myRun()”
 	* 
