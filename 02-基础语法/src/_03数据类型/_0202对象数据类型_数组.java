@@ -3,6 +3,7 @@ package _03数据类型;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class _0202对象数据类型_数组 {
 
@@ -15,7 +16,6 @@ public class _0202对象数据类型_数组 {
 		test5();
 		test6();
 		test7();
-		test8();
 	}
 	
 	/*
@@ -28,13 +28,22 @@ public class _0202对象数据类型_数组 {
 		ArrayList<Integer> arrayList1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
 		System.out.println(arrayList); // []
 		System.out.println(arrayList1); // [1, 2, 3]
+		
+		// 实际开发中：
+		//
+		// 等号的左边我们一般不会直接用ArrayList，而是用List。List是个接口，ArrayList等很多类都实现了这个接口
+		// 所以左边如果写成List，将来如果我们右边想换一个List，就直接换下右边的东西就可以了，左边不用动，这就是面向接口编程
+		//
+		// 并且等号右边的泛型也可以省略，但是<>一定不能省略
+		List<Integer> arrayList11 = new ArrayList<>();
+		System.out.println(arrayList11); // []
 	}
 	
 	/*
 	 * 2、获取数组的长度
 	 */
 	public static void test1() {
-		ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
+		List<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3));
 		System.out.println(arrayList.size()); // 3
 	}
 	
@@ -42,8 +51,8 @@ public class _0202对象数据类型_数组 {
 	 * 3、判断数组是不是空
 	 */
 	public static void test2() {
-		ArrayList<Integer> arrayList = new ArrayList<Integer>();
-		ArrayList<Integer> arrayList1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
+		List<Integer> arrayList = new ArrayList<>();
+		List<Integer> arrayList1 = new ArrayList<>(Arrays.asList(1, 2, 3));
 		System.out.println(arrayList.isEmpty()); // true
 		System.out.println(arrayList1.isEmpty()); // false
 	}
@@ -52,7 +61,7 @@ public class _0202对象数据类型_数组 {
 	 * 4、数组增
 	 */
 	public static void test3() {
-		ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
+		List<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3));
 		
 		// （1）尾部增
 		arrayList.add(4); // 单增
@@ -71,7 +80,7 @@ public class _0202对象数据类型_数组 {
 	 * 5、数组删
 	 */
 	public static void test4() {
-		ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
+		List<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3));
 		
 		// （1）删除某个下标处的元素
 		arrayList.remove(1);
@@ -95,7 +104,7 @@ public class _0202对象数据类型_数组 {
 	 * 6、数组改
 	 */
 	public static void test5() {
-		ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(1, 2, 3));		
+		List<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3));		
 		arrayList.set(1, 222);
 		System.out.println(arrayList); // [1, 222, 3]
 	}
@@ -104,7 +113,7 @@ public class _0202对象数据类型_数组 {
 	 * 7、数组查
 	 */
 	public static void test6() {
-		ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(1, 2, 3));	
+		List<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3));	
 		
 		// （1）查某个下标处的元素
 		System.out.println(arrayList.get(0)); // 1
@@ -123,7 +132,7 @@ public class _0202对象数据类型_数组 {
 	 * 8、数组的遍历
 	 */
 	public static void test7() {
-		ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
+		List<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 2, 3));
 		
 		// （1）普通for循环遍历法
 		for (int i = 0; i < arrayList.size(); i++) {
@@ -154,24 +163,6 @@ public class _0202对象数据类型_数组 {
 			}
 		}
 		System.out.println(arrayList); // [1, 3]
-	}
-	
-	/*
-	 * 9、数组的反转和排序
-	 */
-	public static void test8() {
-		ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(24, 8, 10, 2, 16));	
-		
-		// 反转，不会影响原数组，返回一个翻转后的新数组
-		ArrayList<Integer> reversedArrayList = new ArrayList<Integer>(arrayList.reversed());
-		System.out.println(arrayList); // [24, 8, 10, 2, 16]
-		System.out.println(reversedArrayList); // [16, 2, 10, 8, 24]
-		
-		// 排序，会影响原数组，没有返回值
-		arrayList.sort((item1, item2) -> {
-			return item1 - item2;
-		});
-		System.out.println(arrayList); // [2, 8, 10, 16, 24]
 	}
 		
 }
